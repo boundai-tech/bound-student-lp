@@ -5,7 +5,7 @@ import { fadeInUp } from "@/components/animations/variants";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 md:py-24 px-4 md:px-6">
+    <section id="how-it-works" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 border-t border-border">
       <div className="max-w-[960px] mx-auto">
         <motion.div
           variants={fadeInUp}
@@ -14,10 +14,7 @@ export default function HowItWorks() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-10 md:mb-12"
         >
-          <p className="text-xs font-medium text-foreground/40 uppercase tracking-widest mb-4">
-            How It Works
-          </p>
-          <h2 className="text-[22px] sm:text-[28px] md:text-[34px] font-bold text-foreground leading-tight tracking-tight">
+          <h2 className="text-[24px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 leading-tight tracking-tight">
             3ステップで体験開始
           </h2>
         </motion.div>
@@ -50,7 +47,7 @@ export default function HowItWorks() {
               key={item.step}
               className="relative p-6 rounded-2xl border border-border/60 bg-surface/60 backdrop-blur-sm text-left"
             >
-              <span className="text-[11px] font-bold text-[#0891B2]/60 tracking-widest mb-3 block">
+              <span className="text-[11px] font-bold text-[#EA6B4A]/60 tracking-widest mb-3 block">
                 STEP {item.step}
               </span>
               <h3 className="text-[15px] font-semibold text-foreground mb-2">{item.title}</h3>

@@ -17,7 +17,7 @@ export default function FinalCTA() {
         >
           <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-border/60 bg-gradient-to-br from-foreground/[0.03] via-foreground/[0.015] to-transparent backdrop-blur-sm">
             {/* 背景グロー */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#0891B2]/6 blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#EA6B4A]/6 blur-3xl pointer-events-none" />
 
             <div className="relative px-6 sm:px-10 md:px-16 py-12 sm:py-16 md:py-20 text-center">
               <div className="mb-6 md:mb-8 flex flex-col items-center space-y-4">
@@ -43,7 +43,7 @@ export default function FinalCTA() {
                   href={`${STUDENT_SITE_URL}/register`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-full bg-[#0891B2] text-white text-[14px] font-semibold hover:bg-[#0891B2]/90 transition-all shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-full bg-[#EA6B4A] text-white text-[14px] font-semibold hover:bg-[#EA6B4A]/90 transition-all shadow-sm"
                 >
                   無料で始める
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/components/animations/variants";
 
@@ -7,10 +8,10 @@ const STUDENT_SITE_URL = process.env.NEXT_PUBLIC_STUDENT_SITE_URL ?? "https://st
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-36 pb-6 sm:pb-8 md:pb-10 px-4 md:px-6 flex flex-col items-center text-center overflow-hidden">
+    <section className="relative pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 md:pb-20 px-4 md:px-6 flex flex-col items-center text-center overflow-hidden">
       {/* 背景グラデーション */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#0891B2]/8 via-[#0891B2]/4 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#EA6B4A]/8 via-[#EA6B4A]/4 to-transparent rounded-full blur-3xl" />
       </div>
 
       <motion.div
@@ -42,7 +43,7 @@ export default function Hero() {
             href={`${STUDENT_SITE_URL}/register`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0891B2] text-white text-[14px] sm:text-[15px] font-semibold hover:bg-[#0891B2]/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#EA6B4A] text-white text-[14px] sm:text-[15px] font-semibold hover:bg-[#EA6B4A]/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
           >
             無料で始める
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -50,8 +51,30 @@ export default function Hero() {
             </svg>
           </a>
         </motion.div>
+
       </motion.div>
 
+      {/* Hero Image */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.0, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-[1200px] mt-8 sm:mt-10 md:mt-12"
+      >
+        <div className="relative">
+          <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-foreground/10 via-foreground/5 to-foreground/10 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-40" />
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl shadow-black/20 dark:shadow-black/50 border border-border/50">
+            <Image
+              src="/contents/screenshots/highlight2-new.png"
+              alt="BOUNDのジョブチャレンジ体験画面"
+              width={1200}
+              height={720}
+              className="w-full h-auto block"
+              priority
+            />
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

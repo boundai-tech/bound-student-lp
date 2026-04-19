@@ -10,10 +10,10 @@ export default function JobChallengeTypes() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6">
+    <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <ScrollReveal>
-          <h2 className="text-[22px] md:text-[26px] font-semibold text-foreground/90 text-center mb-8 md:mb-10 lg:mb-12 leading-tight tracking-tight">
+          <h2 className="text-[24px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-10 md:mb-14 lg:mb-16 leading-tight tracking-tight">
             あらゆる職種のチャレンジに挑戦できる
           </h2>
         </ScrollReveal>
@@ -49,7 +49,7 @@ export default function JobChallengeTypes() {
               <ul className="space-y-2.5 md:space-y-3">
                 {jobChallenges[activeTab].benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-[#0891B2] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 text-[#EA6B4A] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-sm md:text-base text-foreground/70">{benefit}</span>
