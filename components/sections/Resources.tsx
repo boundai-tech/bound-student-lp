@@ -8,7 +8,7 @@ const resources = [
   {
     type: "登壇イベント",
     title: "LinkedIn Student Career Week 2025",
-    description: "就活中の学生に向けて、BOUNDの実務体験型就活を紹介。キャリアの作り方をリアルな視点で語りました。",
+    description: "Salesforce・Microsoft米国本社社員が、日本の大学からグローバルテック企業にたどり着いたキャリア戦略をリアルに語る。学歴・英語・スキル・運——何が本当に効いたのか。BOUNDのAIキャリア体験デモも実施。",
     image: "/contents/events/lscw-event.png",
     link: "https://lscw.scoutalia.com/",
     linkLabel: "イベント詳細",
