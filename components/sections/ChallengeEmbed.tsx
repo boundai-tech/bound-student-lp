@@ -30,7 +30,7 @@ export default function ChallengeEmbed() {
             <iframe
               src={iframeSrc}
               width="100%"
-              height="1100px"
+              height="660px"
               frameBorder="0"
               scrolling="no"
               title="BOUND ジョブチャレンジ一覧"
