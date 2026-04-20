@@ -6,6 +6,7 @@ import WhyBound from "@/components/sections/WhyBound";
 import ChallengeEmbed from "@/components/sections/ChallengeEmbed";
 import JobChallengeTypes from "@/components/sections/JobChallengeTypes";
 import HowItWorks from "@/components/sections/HowItWorks";
+import Resources from "@/components/sections/Resources";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export default function StudentLandingPage() {
@@ -19,6 +20,7 @@ export default function StudentLandingPage() {
         <ChallengeEmbed />
         <JobChallengeTypes />
         <HowItWorks />
+        <Resources />
         <FinalCTA />
       </main>
       <Footer />
