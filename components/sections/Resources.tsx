@@ -10,7 +10,7 @@ const resources = [
     title: "LinkedIn Student Career Week 2025",
     description: "Salesforce・Microsoft米国本社社員が、日本の大学からグローバルテック企業にたどり着いたキャリア戦略をリアルに語る。学歴・英語・スキル・運——何が本当に効いたのか。BOUNDのAIキャリア体験デモも実施。",
     image: "/contents/events/lscw-event.png",
-    link: "https://lscw.scoutalia.com/",
+    link: "https://www.linkedin.com/posts/boundinternship_lscweetllpivdkociiy-egtegdefkeggegdefjedojnwjbpeetnbheeoedgeezeftefhegreeqlssoebeeqeex-activity-7450739831225331712-LbUT?utm_source=share&utm_medium=member_desktop&rcm=ACoAACcGSk4B8GlhFxLq55fqNvIzmh1zKdQSBng",
     linkLabel: "イベント詳細",
   },
   {
