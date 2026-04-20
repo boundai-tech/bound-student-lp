@@ -12,15 +12,18 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+      className="fixed top-9 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="w-full px-4 md:px-6 h-14 flex items-center justify-between">
         <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between">
+          {/* モバイル：左スペーサー（ロゴを中央に見せるため） */}
+          <div className="md:hidden w-8" />
+
           {/* ロゴ */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center md:flex-none absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
             <Image
               src="/contents/logos/brand.svg"
               alt="BOUND"
@@ -32,11 +35,17 @@ export default function Header() {
 
           {/* デスクトップナビ */}
           <nav className="hidden md:flex items-center space-x-6 absolute left-1/2 -translate-x-1/2">
+            <a href="#why" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              BOUNDとは
+            </a>
             <a href="#challenges" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
               チャレンジ一覧
             </a>
-            <a href="#how-it-works" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
-              使い方
+            <a href="#job-types" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              職種
+            </a>
+            <a href="#resources" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              イベント・メディア
             </a>
           </nav>
 
@@ -65,7 +74,7 @@ export default function Header() {
               href={`${STUDENT_SITE_URL}/register`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] bg-[#EA6B4A] text-white font-medium rounded-full px-4 py-1.5 hover:bg-[#EA6B4A]/90 transition-all"
+              className="text-[13px] bg-[#EA6B4A] text-white font-medium rounded-full px-4 py-1.5 transition-[transform,background-color] duration-150 ease-out hover:bg-[#EA6B4A]/90 hover:scale-[1.02] active:scale-[0.97]"
             >
               無料で始める
             </a>
@@ -92,13 +101,20 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-t border-border"
+            initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+            animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+            exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border"
           >
             <nav className="px-6 py-4 space-y-3">
+              <a
+                href="#why"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-[15px] text-foreground/70 hover:text-foreground transition-colors py-2"
+              >
+                BOUNDとは
+              </a>
               <a
                 href="#challenges"
                 onClick={() => setMobileMenuOpen(false)}
@@ -107,11 +123,18 @@ export default function Header() {
                 チャレンジ一覧
               </a>
               <a
-                href="#how-it-works"
+                href="#job-types"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-[15px] text-foreground/70 hover:text-foreground transition-colors py-2"
               >
-                使い方
+                職種
+              </a>
+              <a
+                href="#resources"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-[15px] text-foreground/70 hover:text-foreground transition-colors py-2"
+              >
+                イベント・メディア
               </a>
               <div className="pt-3 space-y-2">
                 <a

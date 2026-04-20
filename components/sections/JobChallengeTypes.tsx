@@ -10,10 +10,10 @@ export default function JobChallengeTypes() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 border-t border-border">
+    <section id="job-types" className="py-12 md:py-24 lg:py-32 px-5 md:px-6 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <ScrollReveal>
-          <h2 className="text-[24px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-10 md:mb-14 lg:mb-16 leading-tight tracking-tight">
+          <h2 className="text-[20px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
             あらゆる職種のチャレンジに挑戦できる
           </h2>
         </ScrollReveal>

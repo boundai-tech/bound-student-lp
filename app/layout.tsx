@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BOUND - 実務体験ジョブチャレンジで就活を変える",
+  title: "BOUND ナビゲーター | 実務体験ジョブチャレンジで学びと働くを繋ぐ",
   description:
-    "企業のリアルな課題に挑戦し、スキルと可能性を証明しよう。AIと一緒に取り組む実務体験型ジョブチャレンジ。",
+    "学びと働くのギャップを埋める。企業のリアルな課題に挑戦しながら、業界・職種の解像度を上げ、自分に合ったキャリアを見つける新しい就活体験。",
   icons: {
     icon: [{ url: "/favicon-tab.svg", type: "image/svg+xml" }],
     shortcut: "/favicon-tab.svg",
