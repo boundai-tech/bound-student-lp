@@ -1,65 +1,114 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import Card from "@/components/ui/Card";
 import { jobChallenges } from "@/lib/data/jobChallenges";
 
 export default function JobChallengeTypes() {
-  const [activeTab, setActiveTab] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
-    <section id="job-types" className="py-12 md:py-24 lg:py-32 px-5 md:px-6 border-t border-border">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="job-types" className="py-12 md:py-24 lg:py-32 border-t border-border">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-6">
         <ScrollReveal>
-          <h2 className="text-[20px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
-            あらゆる職種のチャレンジに挑戦できる
+          <p className="text-xs md:text-sm font-semibold text-[#EA6B4A] text-center uppercase tracking-widest mb-3 md:mb-4">
+            Job Types
+          </p>
+          <h2 className="text-[22px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
+            あらゆる職種の<br className="sm:hidden" />チャレンジに挑戦できる
           </h2>
         </ScrollReveal>
-
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-10 lg:mb-12">
-          {jobChallenges.map((challenge, index) => (
-            <button
-              key={challenge.id}
-              onClick={() => setActiveTab(index)}
-              className={`px-3 md:px-5 py-1.5 md:py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all w-[140px] md:w-[200px] text-center ${
-                activeTab === index
-                  ? "bg-foreground text-background shadow-sm"
-                  : "bg-surface text-foreground/60 border border-border hover:border-foreground/20"
-              }`}
-            >
-              {challenge.title}
-            </button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Card hover={false} className="max-w-3xl mx-auto bg-surface">
-              <p className="text-base md:text-lg text-foreground/80 mb-6 md:mb-8 leading-relaxed">
-                {jobChallenges[activeTab].description}
-              </p>
-              <ul className="space-y-2.5 md:space-y-3">
-                {jobChallenges[activeTab].benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <svg className="w-5 h-5 text-[#EA6B4A] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm md:text-base text-foreground/70">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </motion.div>
-        </AnimatePresence>
       </div>
+
+      {/* カルーセルラッパー（モバイルのみ overflow-hidden でクリップ） */}
+      <div className="md:hidden overflow-hidden">
+        <div
+          ref={scrollRef}
+          className="flex gap-4 scrollbar-none pb-2"
+          style={{ scrollSnapType: "x mandatory", touchAction: "pan-x", overflowX: "scroll", paddingLeft: "5vw", paddingRight: "5vw" }}
+        >
+        {jobChallenges.map((job, i) => (
+          <div
+            key={job.id}
+            className="flex-none w-[78vw] bg-surface border border-border/60 rounded-2xl p-5 flex flex-col gap-4"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            {/* 番号 */}
+            <span className="text-xs font-semibold text-[#EA6B4A] uppercase tracking-widest">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            {/* 職種名 + キャッチコピー */}
+            <div>
+              <h3 className="text-[18px] md:text-[20px] font-bold text-foreground leading-tight mb-1">
+                {job.title}
+              </h3>
+              <p className="text-[13px] md:text-[14px] text-[#EA6B4A] font-medium leading-snug">
+                {job.catchcopy}
+              </p>
+            </div>
+
+            {/* 説明文 */}
+            <p className="text-[13px] md:text-[14px] text-foreground/60 leading-relaxed flex-1">
+              {job.description}
+            </p>
+
+            {/* タグ */}
+            <div className="flex flex-wrap gap-1.5">
+              {job.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-foreground/[0.06] text-foreground/60"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+          {/* 末尾スペーサー：右余白を左と揃える */}
+          <div className="flex-none" style={{ width: "calc(5vw - 16px)" }} aria-hidden />
+        </div>
+      </div>
+
+      {/* デスクトップ：グリッド */}
+      <div className="hidden md:grid md:grid-cols-4 gap-5 px-6 max-w-[1200px] mx-auto">
+        {jobChallenges.map((job, i) => (
+          <div
+            key={job.id}
+            className="bg-surface border border-border/60 rounded-2xl p-6 flex flex-col gap-4"
+          >
+            <span className="text-xs font-semibold text-[#EA6B4A] uppercase tracking-widest">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3 className="text-[20px] font-bold text-foreground leading-tight mb-1">{job.title}</h3>
+              <p className="text-[14px] text-[#EA6B4A] font-medium leading-snug">{job.catchcopy}</p>
+            </div>
+            <p className="text-[14px] text-foreground/60 leading-relaxed flex-1">{job.description}</p>
+            <div className="flex flex-wrap gap-1.5">
+              {job.tags.map((tag) => (
+                <span key={tag} className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-foreground/[0.06] text-foreground/60">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* モバイル：スクロールインジケーター */}
+      <p className="md:hidden text-center text-[11px] text-foreground/30 mt-4 tracking-wide">
+        スワイプして見る →
+      </p>
     </section>
   );
 }

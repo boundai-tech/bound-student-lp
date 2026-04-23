@@ -1,7 +1,8 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import MobileStickyFooter from "@/components/layout/MobileStickyFooter";
 import Hero from "@/components/sections/Hero";
+import SocialProof from "@/components/sections/SocialProof";
 import StudentPain from "@/components/sections/StudentPain";
 import WhyBound from "@/components/sections/WhyBound";
 import ChallengeEmbed from "@/components/sections/ChallengeEmbed";
@@ -12,10 +13,10 @@ import FinalCTA from "@/components/sections/FinalCTA";
 export default function StudentLandingPage() {
   return (
     <>
-      <AnnouncementBar />
       <Header />
-      <main className="pt-9">
+      <main className="pb-20 md:pb-0">
         <Hero />
+        <SocialProof />
         <StudentPain />
         <WhyBound />
         <ChallengeEmbed />
@@ -24,6 +25,7 @@ export default function StudentLandingPage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileStickyFooter />
     </>
   );
 }

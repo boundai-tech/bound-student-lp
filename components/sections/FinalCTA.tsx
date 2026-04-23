@@ -33,7 +33,7 @@ export default function FinalCTA() {
                 />
               </div>
 
-              <p className="text-[13px] sm:text-[14px] md:text-[15px] text-foreground/50 mb-8 md:mb-10 leading-relaxed max-w-[500px] mx-auto">
+              <p className="text-[15px] sm:text-[15px] md:text-[15px] text-foreground/50 mb-8 md:mb-10 leading-relaxed max-w-[500px] mx-auto">
                 企業が公開した実務をオンラインで体験する、新しい学びのかたち。
                 <span className="block mt-1">自分に合った職種と業界を、AIと学びながら探そう。</span>
               </p>

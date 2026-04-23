@@ -3,19 +3,28 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const STUDENT_SITE_URL = process.env.NEXT_PUBLIC_STUDENT_SITE_URL ?? "https://student.boundai.tech";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <motion.header
-      className="fixed top-9 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-border"
+          : "md:bg-background/80 md:backdrop-blur-md md:border-border bg-transparent border-transparent"
+      }`}
     >
       <div className="w-full px-4 md:px-6 h-14 flex items-center justify-between">
         <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between">

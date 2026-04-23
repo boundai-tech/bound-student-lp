@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 34" fill="none">
+  <!-- "Linked" text -->
+  <text x="0" y="27" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1a1a1a">Linked</text>
+  <!-- "in" box -->
+  <rect x="90" y="0" width="34" height="34" rx="6" fill="#0A66C2"/>
+  <text x="97" y="26" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="white">in</text>
+</svg>

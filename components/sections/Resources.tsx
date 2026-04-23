@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const resources = [
@@ -37,75 +38,103 @@ const typeColors: Record<string, string> = {
   "メディア": "text-blue-600 bg-blue-50 border-blue-200",
 };
 
+function ResourceCard({ item }: { item: typeof resources[number] }) {
+  return (
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col rounded-xl border border-border/60 bg-surface hover:bg-foreground/[0.02] overflow-hidden transition-colors"
+    >
+      {item.image ? (
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
+          <Image
+            src={item.image}
+            alt={item.title}
+            fill
+            className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+          />
+        </div>
+      ) : (
+        <div className="w-full aspect-[16/9] bg-foreground/[0.03] flex items-center justify-center border-b border-border/40">
+          <span className="text-[11px] font-medium text-foreground/30 uppercase tracking-widest">{item.type}</span>
+        </div>
+      )}
+      <div className="flex flex-col flex-1 p-5 md:p-6 gap-3">
+        <span className={`self-start text-[10px] md:text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${typeColors[item.type]}`}>
+          {item.type}
+        </span>
+        <h3 className="text-[16px] md:text-[15px] font-bold text-foreground leading-snug line-clamp-2">
+          {item.title}
+        </h3>
+        <p className="text-[14px] md:text-[13px] text-foreground/55 leading-relaxed line-clamp-3 flex-1">
+          {item.description}
+        </p>
+        <span className="inline-flex items-center gap-1 text-[14px] font-medium text-[#EA6B4A] mt-1 group-hover:gap-2 transition-all">
+          {item.linkLabel}
+          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
+    </a>
+  );
+}
+
 export default function Resources() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section id="resources" className="py-12 md:py-24 lg:py-32 px-5 md:px-6 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <ScrollReveal>
-          <h2 className="text-[20px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
+          <p className="text-xs md:text-sm font-semibold text-[#EA6B4A] text-center uppercase tracking-widest mb-3 md:mb-4">
+            Media & Events
+          </p>
+          <h2 className="text-[22px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
             メディア・イベント掲載
           </h2>
         </ScrollReveal>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.1 } },
-          }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
-        >
+        {/* デスクトップ：3列グリッド */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6">
           {resources.map((item, i) => (
-            <motion.a
-              key={i}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-              }}
-              className="group flex flex-col rounded-xl border border-border/60 bg-surface hover:bg-foreground/[0.02] overflow-hidden transition-colors"
-            >
-              {/* 画像 or プレースホルダー */}
-              {item.image ? (
-                <div className="relative w-full aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-              ) : (
-                <div className="w-full aspect-[16/9] bg-foreground/[0.03] flex items-center justify-center border-b border-border/40">
-                  <span className="text-[11px] font-medium text-foreground/30 uppercase tracking-widest">{item.type}</span>
-                </div>
-              )}
-
-              {/* コンテンツ */}
-              <div className="flex flex-col flex-1 p-5 md:p-6 gap-3">
-                <span className={`self-start text-[10px] md:text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${typeColors[item.type]}`}>
-                  {item.type}
-                </span>
-                <h3 className="text-[14px] md:text-[15px] font-bold text-foreground leading-snug line-clamp-2">
-                  {item.title}
-                </h3>
-                <p className="text-[12px] md:text-[13px] text-foreground/55 leading-relaxed line-clamp-3 flex-1">
-                  {item.description}
-                </p>
-                <span className="inline-flex items-center gap-1 text-[12px] font-medium text-[#EA6B4A] mt-1 group-hover:gap-2 transition-all">
-                  {item.linkLabel}
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </motion.a>
+            <ResourceCard key={i} item={item} />
           ))}
-        </motion.div>
+        </div>
+
+        {/* モバイル：最初の2枚 + 展開ボタン */}
+        <div className="md:hidden flex flex-col gap-4">
+          {resources.slice(0, 2).map((item, i) => (
+            <ResourceCard key={i} item={item} />
+          ))}
+
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                className="overflow-hidden"
+              >
+                <ResourceCard item={resources[2]} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {!expanded && (
+            <button
+              onClick={() => setExpanded(true)}
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-border/60 text-[14px] font-medium text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 transition-all"
+            >
+              もっと見る
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

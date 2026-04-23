@@ -8,7 +8,7 @@ const STUDENT_SITE_URL = process.env.NEXT_PUBLIC_STUDENT_SITE_URL ?? "https://st
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 sm:pt-32 md:pt-40 pb-10 sm:pb-16 md:pb-20 px-5 md:px-6 flex flex-col items-center text-center overflow-hidden">
+    <section className="relative pt-20 sm:pt-36 md:pt-44 pb-10 sm:pb-16 md:pb-20 px-5 md:px-6 flex flex-col items-center text-center overflow-hidden">
       {/* 背景グラデーション */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#EA6B4A]/8 via-[#EA6B4A]/4 to-transparent rounded-full blur-3xl" />
@@ -22,35 +22,35 @@ export default function Hero() {
       >
         {/* キャッチコピー */}
         <motion.div variants={staggerItem} className="space-y-4">
-          <h1 className="text-[26px] sm:text-[36px] md:text-[48px] lg:text-[56px] font-bold text-foreground leading-[1.2] tracking-tight">
-            働くを体験して、<br />自分のキャリアを<br className="sm:hidden" />見つけよう
+          <h1 className="text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] font-bold text-foreground leading-[1.2] tracking-tight">
+            働くを体験して<br />自分に合ったキャリアを
           </h1>
-          <p className="text-[14px] sm:text-[17px] md:text-[19px] text-foreground/60 leading-[1.8] max-w-[620px] mx-auto">
-            AIと"自分に合った仕事"が見つかる新たな職業体験。企業のリアルな課題に挑戦し、自分の適性と就活の軸を見つけよう。
+          <p className="text-[16px] sm:text-[18px] md:text-[20px] text-foreground/60 leading-[1.8] max-w-[620px] mx-auto">
+            仕事のリアルは、体験してはじめてわかる。<br />企業の課題に挑戦して、就活の軸をつくろう。
           </p>
         </motion.div>
 
         {/* CTAボタン */}
         <motion.div
           variants={staggerItem}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3"
+          className="flex flex-col items-center gap-3"
         >
           <a
-            href={`${STUDENT_SITE_URL}/register`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 rounded-full bg-[#EA6B4A] text-white text-[15px] font-semibold shadow-lg transition-[transform,background-color,box-shadow] duration-150 ease-out hover:bg-[#EA6B4A]/90 hover:scale-[1.02] hover:shadow-xl active:scale-[0.97]"
+            href="#challenges"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-foreground text-background text-[15px] font-semibold shadow-lg transition-[transform,opacity] duration-150 ease-out hover:opacity-80 hover:scale-[1.02] active:scale-[0.97]"
           >
-            無料で始める
+            チャレンジを見る
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
           <a
-            href="#challenges"
-            className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-[15px] font-semibold transition-[transform,opacity] duration-150 ease-out hover:opacity-80 hover:scale-[1.02] active:scale-[0.97]"
+            href={`${STUDENT_SITE_URL}/register`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] text-foreground/40 hover:text-foreground/70 transition-colors"
           >
-            ジョブチャレンジを見る
+            無料で登録する
           </a>
         </motion.div>
 
@@ -65,13 +65,13 @@ export default function Hero() {
       >
         <div className="relative">
           <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-foreground/10 via-foreground/5 to-foreground/10 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-40" />
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl shadow-black/20 dark:shadow-black/50 border border-border/50">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl shadow-black/20 dark:shadow-black/50 border border-border/50 aspect-[3/4] sm:aspect-auto">
             <Image
               src="/contents/screenshots/highlight2-new.png"
               alt="BOUNDのジョブチャレンジ体験画面"
               width={1200}
               height={720}
-              className="w-full h-auto block"
+              className="w-full h-full sm:h-auto object-cover sm:object-auto object-top sm:scale-100 scale-[1.02] origin-top"
               priority
             />
           </div>

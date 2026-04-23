@@ -19,7 +19,7 @@ const reasons = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    title: "業界 × 職種の掛け合わせで、働くことの解像度が上がる",
+    title: "業界 × 職種で「働く」解像度が上がる",
     description: "同じ「マーケター」でもB2B SaaSと消費財では仕事がまったく異なる。リアルな企業課題に挑戦することで、職種・業界への具体的な理解が深まる。",
   },
   {
@@ -41,12 +41,11 @@ export default function WhyBound() {
           <p className="text-xs md:text-sm font-semibold text-[#EA6B4A] text-center uppercase tracking-widest mb-3 md:mb-4">
             Our Mission
           </p>
-          <h2 className="text-[20px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-4 md:mb-6 leading-snug tracking-tight">
-            説明会でも就活サイトでもない、<br />新しい就活の体験
+          <h2 className="text-[22px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-4 md:mb-6 leading-snug tracking-tight">
+            説明会でも就活サイトでもない<br />新しい就活の体験
           </h2>
-          <p className="text-[13px] md:text-base text-foreground/55 text-center max-w-3xl mx-auto mb-8 md:mb-14 lg:mb-16 leading-relaxed">
-            同じ職種でも、業界や企業によって仕事はまったく異なる。<br className="hidden sm:block" />
-            BOUNDは実務体験を通じて、<strong className="text-foreground/75 font-semibold">学びと働くのギャップを埋める</strong>ことを支援します。
+          <p className="text-[15px] md:text-base text-foreground/55 text-center max-w-3xl mx-auto mb-8 md:mb-14 lg:mb-16 leading-relaxed">
+            同じ職種でも、業界や企業によって仕事は全く異なる。<br />実務体験で学びと働くのギャップを埋める。
           </p>
         </ScrollReveal>
 
@@ -75,8 +74,8 @@ export default function WhyBound() {
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#EA6B4A]/8 text-[#EA6B4A] mb-4">
                 {reason.icon}
               </div>
-              <h3 className="text-[13px] md:text-lg font-bold text-foreground mb-2 leading-snug">{reason.title}</h3>
-              <p className="text-[12px] md:text-sm text-foreground/60 leading-relaxed">{reason.description}</p>
+              <h3 className="text-[15px] md:text-lg font-bold text-foreground mb-2 leading-snug">{reason.title}</h3>
+              <p className="text-[14px] md:text-sm text-foreground/60 leading-relaxed">{reason.description}</p>
             </motion.div>
           ))}
         </motion.div>

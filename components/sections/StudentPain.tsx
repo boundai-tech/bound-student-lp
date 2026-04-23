@@ -43,8 +43,11 @@ export default function StudentPain() {
     <section id="why" className="py-12 md:py-24 lg:py-32 px-5 md:px-6">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center">
         <ScrollReveal>
-          <h2 className="text-[20px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
-            就活、こんなお悩みありませんか？
+          <p className="text-xs md:text-sm font-semibold text-[#EA6B4A] text-center uppercase tracking-widest mb-3 md:mb-4">
+            The Problem
+          </p>
+          <h2 className="text-[22px] md:text-[28px] lg:text-[34px] font-semibold text-foreground/90 text-center mb-8 md:mb-14 lg:mb-16 leading-tight tracking-tight">
+            就活、こんなお悩み<br className="sm:hidden" />ありませんか？
           </h2>
         </ScrollReveal>
 
@@ -73,7 +76,7 @@ export default function StudentPain() {
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#EA6B4A]/8 text-[#EA6B4A] mb-4">
                 {pain.icon}
               </div>
-              <p className="text-[13px] md:text-lg font-bold text-foreground leading-snug">{pain.text}</p>
+              <p className="text-[15px] md:text-lg font-bold text-foreground leading-snug">{pain.text}</p>
             </motion.div>
           ))}
         </motion.div>
