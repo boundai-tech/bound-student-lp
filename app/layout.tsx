@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+
 export const metadata: Metadata = {
   title: "BOUND ナビゲーター | 実務体験ジョブチャレンジで学びと働くを繋ぐ",
   description:
@@ -19,6 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);`,
+          }}
+        />
+      </head>
       <body className="bg-background text-foreground min-h-screen font-sans antialiased">
         {children}
       </body>
